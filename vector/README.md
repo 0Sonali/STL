@@ -11,14 +11,17 @@ Appending and removing elements at the end of the array is very fast. But insert
 
 
 Vector - Performance
+
 Vectors grow dynamically, and every vector has a specific size. When we add a new element to a vector, the computer reallocates memory and may even copy all of the vector elements into this new memory, and this can cause a performance hit.
 
 
-capacity()
+capacity()-
+
 The capacity() returns the capacity of a vector (the number of elements that a vector can hold before a program must allocate more memory for it). So, a vector's capacity is not the same thing as its size which is the number of elements a vector currently holds. In short, capacity() is the size of the container and the size() is the currently filled level. The capacity() is always equal to or larger than the size. The difference between them is the number of elements that we can add to the vector before the array under the hood needs to be reallocated.
 
 
-reserve()
+reserve()-
+
 Before we look into the reserve() we need to know what's happening whenever a vector needs more space. It's doing similar to realloc operation. New memory allocation, copy from the old to the new, destruct old objects, deallocate old memory, invalidation of iterators. It's expensive!
 The reserve() increases the capacity of a vector to the number supplied as an argument. The reserve() gives us control over when a reallocation of additional memory occurs.
 By using reserve() to keep a vector's capacity large enough for our purposes, we can delay memory reallocation.
